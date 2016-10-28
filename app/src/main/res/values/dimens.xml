@@ -1,0 +1,26 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <!--//MODE_FIXED 模式-->
+    //点击前后的图片大小设置文字大小
+    <!--<dimen name="fixed_label_active">20sp</dimen>-->
+    <!--<dimen name="fixed_label_inactive">17sp</dimen>-->
+    <!--//导航栏高度-->
+    <!--<dimen name="fixed_height">90dp</dimen>-->
+    <!--//导航栏距离底部-->
+    <!--<dimen name="fixed_height_bottom_padding">23dp</dimen>-->
+    <!--//图片所在的布局高度-->
+    <!--<dimen name="fixed_icon_badge_grid_height">40dp</dimen>-->
+    <!--//图片高度-->
+    <!--<dimen name="fixed_icon_grid">35dp</dimen>-->
+    <!--//点击前后导航栏的paddingTop-->
+    <!--<dimen name="fixed_height_top_padding_active">0dp</dimen>-->
+    <!--<dimen name="fixed_height_top_padding_inactive">4dp</dimen>-->
+    <!--//导航栏单个item的宽度-->
+    <!--<dimen name="fixed_icon_badge_grid_width">50dp</dimen>-->
+    <!--//初始化状态下未点击文字的大小（最大值*当前倍数）-->
+    <!--<item name="fixed_label_active_to_inactive_ratio" format="float" type="dimen">0.85</item>-->
+    <!--//左右padding-->
+    <!--<dimen name="fixed_width_padding">0dp</dimen>-->
+</resources>

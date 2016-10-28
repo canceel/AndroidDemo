@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    <declare-styleable name="ButtonView">
+        <attr name="text" format="string" />
+        <attr name="text_color" format="color" />
+        <attr name="text_size" format="dimension" />
+        <attr name="stroke_size" format="dimension" />
+        <attr name="stroke_color" format="color" />
+        <attr name="arc_color" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="WatchBoard">
+        <!--表盘的边距-->
+        <attr name="wb_padding" format="dimension" />
+        <!--表盘文字大小-->
+        <attr name="wb_text_size" format="dimension" />
+        <!--时针的宽度-->
+        <attr name="wb_hour_pointer_width" format="dimension" />
+        <!--分针的宽度-->
+        <attr name="wb_minute_pointer_width" format="dimension" />
+        <!--秒针的宽度-->
+        <attr name="wb_second_pointer_width" format="dimension" />
+        <!--指针圆角值-->
+        <attr name="wb_pointer_corner_radius" format="dimension" />
+        <!--指针超过中心点的长度-->
+        <attr name="wb_pointer_end_length" format="dimension" />
+        <!--时刻刻度颜色-->
+        <attr name="wb_scale_long_color" format="color" />
+        <!--非时刻刻度颜色-->
+        <attr name="wb_scale_short_color" format="color" />
+        <!--时针颜色-->
+        <attr name="wb_hour_pointer_color" format="color" />
+        <!--分针颜色-->
+        <attr name="wb_minute_pointer_color" format="color" />
+        <!--秒针颜色-->
+        <attr name="wb_second_pointer_color" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="RainBowBar">
+        <attr name="rainbow_hspace" format="dimension"></attr>
+        <attr name="rainbow_vspace" format="dimension"></attr>
+        <attr name="rainbow_color" format="color"></attr>
+    </declare-styleable>
+
+    <declare-styleable name="FlowLayout">
+        <attr name="width_space" format="dimension" />
+        <attr name="height_space" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="SwipyRefreshLayout">
+        <attr name="direction">
+            <enum name="top" value="0" />
+            <enum name="bottom" value="1" />
+            <enum name="both" value="2" />
+        </attr>
+    </declare-styleable>
+
+
+</resources>

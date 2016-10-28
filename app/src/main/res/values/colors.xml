@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="arcColor">#bf9f62</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="background">@color/separator</color>
+    <!-- 通用颜色 -->
+    <color name="transparent">#0000</color>
+    <color name="grey_transparent">#44EBEDEC</color>
+    <color name="red">@color/red_211_55_47</color>
+    <color name="red_ligth">#f1d3d3</color>
+    <color name="yellow">@color/yellow_243_188_38</color>
+    <color name="green">#5db7ad</color>
+    <color name="green_light">#dff1ef</color>
+    <color name="grey_b2_b2_b2">#b2b2b2</color>
+    <color name="white">@color/white_255_255_255</color>
+    <color name="pink">@color/pink_255_51_102</color>
+    <color name="purple_dark">@color/black_37_35_45</color>
+    <color name="separator">@color/white_222_222_222</color>
+    <color name="background_tab">#DFFF</color>
+    <color name="warn_background">@color/yellow_253_242_217</color>
+    <color name="text_normal">@color/grey_102_102_102</color>
+    <color name="text_dark">@color/black_50_50_50</color>
+    <color name="text_light">@color/grey_153_153_153</color>
+    <color name="text_special">@color/pink_255_51_102</color>
+    <color name="text_white_0">@color/white_255_255_255</color>
+    <color name="text_white_50">#8FFF</color>
+    <color name="text_white_80">#DFFF</color>
+
+    <color name="grey">#CCC</color>
+    <color name="btn_background_press">#E52E5C</color>
+    <color name="btn_background_unpress">@color/pink</color>
+    <color name="btn_background_enable">@color/text_light</color>
+    <color name="btn_white_background_press">#f3f3f4</color>
+    <color name="btn_white_background_unpress">@color/white</color>
+    <color name="text_press">@color/text_special</color>
+    <color name="text_unpress">@color/text_normal</color>
+    <color name="text_red">#E80000</color>
+    <!-- 应用颜色 -->
+
+    <!-- 微信支付 -->
+    <color name="navpage">#FFE1E8EB</color>
+
+
+    <!--新增加颜色-->
+
+    <!--black-->
+    <color name="black_3_35_50">#032332</color>
+    <color name="black_37_35_45">#25232D</color>
+    <color name="black_37_37_37">#252525</color>
+    <color name="black_49_21_19">#311513</color>
+    <color name="black_50_50_50">#323232</color>
+    <color name="black_51_51_51">#333333</color>
+    <color name="black_76_76_76">#4C4C4C</color>
+    <color name="black_4f_4f_4f">#4f4f4f</color>
+    <!--grey-->
+    <color name="grey_102_102_102">#666666</color>
+    <color name="grey_125_125_125">#7D7D7D</color>
+    <color name="grey_138_138_138">#8A8A8A</color>
+    <color name="grey_153_153_153">#999999</color>
+    <color name="grey_159_159_159">#999b9f</color>
+    <color name="grey_C2C5C9">#C2C5C9</color>
+    <!--white-->
+    <color name="white_204_204_204">#CCCCCC</color>
+    <color name="white_215_215_215">#D7D7D7</color>
+    <color name="white_222_222_222">#DEDEDE</color>
+    <color name="white_229_229_229">#E5E5E5</color>
+    <color name="white_242_242_242">#F2F2F2</color>
+    <color name="white_243_243_244">#F3F3F4</color>
+    <color name="white_248_248_248">#F8F8F8</color>
+    <color name="white_248_248_249">#F8F8F9</color>
+    <color name="white_254_254_254">#FEFEFE</color>
+    <color name="white_255_254_254">#FFFEFE</color>
+    <color name="white_255_255_255">#FFFFFF</color>
+    <!--pink-->
+    <color name="pink_255_51_102">#FF3366</color>
+    <color name="pink_255_55_104">#FF3768</color>
+    <!--yellow-->
+    <color name="yellow_fff9da">#fff9da</color>
+    <color name="yellow_bf9f62">#bf9f62</color>
+    <color name="yellow_243_188_38">#F3BC26</color>
+    <color name="yellow_253_242_217">#FDF2D9</color>
+    <color name="yellow_255_144_0">#FF9000</color>
+    <!--red-->
+    <color name="red_211_55_47">#D3372F</color>
+    <!--green-->
+    <color name="green_95_211_1">#5FD301</color>
+    <!--blue-->
+    <color name="text_light_blue">#009BFE</color>
+    <!--purple-->
+    <!--color-->
+    <!--color-->
+    <!--color-->
+    <!--扫描-->
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="result_view">#b0000000</color>
+    <color name="viewfinder_frame">#ff000000</color>
+    <color name="viewfinder_laser">#ffff0000</color>
+    <color name="possible_result_points">#c0ffff00</color>
+    <color name="scan_type_default">#a19c9b</color>
+    <color name="black_transparent">#b2000000</color>
+    <!--brown-->
+    <color name="light_brown">#bf9f62</color>
+    <color name="dark_brown">#a88644</color>
+    <!--black-->
+    <color name="black">#1f1a17</color>
+    <color name="grey_yyh">#e9e9e9</color>
+    <color name="grey_185_188_193">#b9bcc1</color>
+    <color name="grey_169_169_169">#a9a9a9</color>
+    <color name="grey_208_214_213">#d0d2d5</color>
+    <color name="text_order">#1f1a17</color>
+    <color name="cacheColorHint">#00000000</color>
+
+    <color name="red_fe3a39">#FE3A39</color>
+    <color name="yellow_ffc12d">#FFC12D</color>
+    <color name="green_2bc497">#2BC497</color>
+    <color name="gray_d7d7d7">#D7D7D7</color>
+</resources>
