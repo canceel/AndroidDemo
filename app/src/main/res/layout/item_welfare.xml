@@ -18,8 +18,7 @@
         android:id="@+id/image"
         android:layout_width="300dp"
         android:layout_height="310dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:padding="1dp"
-        fresco:placeholderImage="@mipmap/icon_tab_user" />
+        fresco:placeholderImage="@mipmap/icon_tab_user"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

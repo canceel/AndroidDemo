@@ -24,15 +24,17 @@ public class DataAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context mContext;
     private List<Welfare> datas;
     private LayoutInflater inflater;
+    private ImageDetailListener imageDetailListener;
 
-    public DataAdapter(Context context) {
-        this(context, null);
+    public DataAdapter(Context context, ImageDetailListener listener) {
+        this(context, null, listener);
 
     }
 
-    public DataAdapter(Context context, List<Welfare> data) {
+    public DataAdapter(Context context, List<Welfare> data, ImageDetailListener listener) {
         this.mContext = context;
         this.datas = data;
+        this.imageDetailListener = listener;
         inflater = LayoutInflater.from(mContext);
     }
 
@@ -50,8 +52,16 @@ public class DataAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
         ((WelfareHolder) holder).simpleDraweeView.setImageURI(datas.get(position).getUrl());
+        ((WelfareHolder) holder).simpleDraweeView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (imageDetailListener != null) {
+                    imageDetailListener.ImageDetail(((WelfareHolder) holder).simpleDraweeView, datas.get(position).getUrl());
+                }
+            }
+        });
     }
 
     @Override
@@ -68,10 +78,14 @@ public class DataAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         @BindView(R.id.image)
         SimpleDraweeView simpleDraweeView;
 
-        public WelfareHolder(View itemView) {
+        public WelfareHolder(final View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
+    }
+
+    public interface ImageDetailListener {
+        void ImageDetail(View view, String imageUrl);
     }
 
 }

@@ -1,6 +1,7 @@
 package com.shenme.androiddemo.fragment;
 
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.shenme.androiddemo.R;
+import com.shenme.androiddemo.activity.ImageDetailActivity;
 import com.shenme.androiddemo.adapter.DataAdapter;
 import com.shenme.androiddemo.base.BaseFragment;
 import com.shenme.androiddemo.bean.Welfare;
@@ -28,13 +30,14 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import immortalz.me.library.TransitionsHeleper;
 
 
 /**
  * Created by CANC on 2016/9/26.
  */
 
-public class HomePageFragment extends BaseFragment {
+public class HomePageFragment extends BaseFragment implements DataAdapter.ImageDetailListener {
 
     //界面数据
     private List<Welfare> datas = new ArrayList<>();
@@ -57,12 +60,13 @@ public class HomePageFragment extends BaseFragment {
         setSwipeLayout();
         initView();
         initPageInfo();
-        getData(true);        return view;
+        getData(true);
+        return view;
 
     }
 
     private void initView() {
-        adapter = new DataAdapter(mContext);
+        adapter = new DataAdapter(mContext, this);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext);
         linearLayoutManager.setOrientation(OrientationHelper.VERTICAL);
@@ -90,7 +94,7 @@ public class HomePageFragment extends BaseFragment {
 //                            recyclerView.addView(simpleDraweeView);
                             datas.addAll(data.getWelfares());
                             if (adapter == null) {
-                                adapter = new DataAdapter(mContext, datas);
+                                adapter = new DataAdapter(mContext, datas, (DataAdapter.ImageDetailListener) mContext);
                             } else {
                                 adapter.setData(datas, mContext);
                             }
@@ -112,5 +116,10 @@ public class HomePageFragment extends BaseFragment {
     public void onRefresh(SwipyRefreshLayoutDirection direction) {
         super.onRefresh(direction);
         swipeLayout.setRefreshing(false);
+    }
+
+    @Override
+    public void ImageDetail(View view, String imageUrl) {
+        TransitionsHeleper.startAcitivty((Activity) mContext, ImageDetailActivity.class, view, imageUrl);
     }
 }
