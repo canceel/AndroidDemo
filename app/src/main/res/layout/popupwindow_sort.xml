@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white_242_242_242"
+    android:orientation="vertical">
+
+    <com.shenme.androiddemo.widget.AutoHeightListView
+        android:id="@+id/sort_list"
+        style="@style/ListViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

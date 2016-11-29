@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">@color/viewfinder_frame</color>
+    <color name="colorPrimaryDark">@color/black_37_35_45</color>
     <color name="arcColor">#bf9f62</color>
     <color name="colorAccent">#FF4081</color>
     <color name="background">@color/separator</color>
@@ -55,6 +55,7 @@
     <color name="black_76_76_76">#4C4C4C</color>
     <color name="black_4f_4f_4f">#4f4f4f</color>
     <!--grey-->
+    <color name="grey_f2f2f2">#f2f2f2</color>
     <color name="grey_102_102_102">#666666</color>
     <color name="grey_125_125_125">#7D7D7D</color>
     <color name="grey_138_138_138">#8A8A8A</color>
@@ -109,6 +110,7 @@
     <color name="grey_185_188_193">#b9bcc1</color>
     <color name="grey_169_169_169">#a9a9a9</color>
     <color name="grey_208_214_213">#d0d2d5</color>
+    <color name="grey_f7f7f7">#f7f7f7</color>
     <color name="text_order">#1f1a17</color>
     <color name="cacheColorHint">#00000000</color>
 
@@ -116,4 +118,25 @@
     <color name="yellow_ffc12d">#FFC12D</color>
     <color name="green_2bc497">#2BC497</color>
     <color name="gray_d7d7d7">#D7D7D7</color>
+
+
+    <!--黑色-->
+    <color name="normal_black">#1F1A17</color>
+    <color name="light_black">#B9BCC1</color>
+    <color name="bold_black">#4A4A4A</color>
+    <color name="green_yyh">#2BACFF</color>
+    <!--50%透明度-->
+    <color name="half_transparent">#7f000000</color>
+    <!--30%透明度-->
+    <color name="thirty_percent">#4f000000</color>
+    <!--ffffff %50-->
+    <color name="half_ffffff">#7dffffff</color>
+    <color name="text_fea423">#fea423</color>
+    <!--背景灰色透明-->
+    <color name="grey_tr">#b0000000</color>
+    <!--模块外的1px描边灰色-->
+    <color name="stroke_grey_yyh">#b9bcc1</color>
+
+    <color name="text_464646">#464646</color>
+
 </resources>

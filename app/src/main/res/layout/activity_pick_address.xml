@@ -1,0 +1,81 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/title"
+        style="@style/TitleStyle">
+
+        <ImageButton
+            style="@style/BackStyle"
+            android:onClick="back" />
+
+        <TextView
+            android:id="@+id/page_title"
+            style="@style/TextTitleStyle"
+            android:text="选择收货地址" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@null"
+            android:onClick="add_address"
+            android:text="添加"
+            android:textColor="@color/text_white_80"
+            android:textSize="16sp"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/btn_manager_address"
+        style="@style/ButtonStyle"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="10dp"
+        android:clickable="true"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/iv_AddAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_add_sel" />
+
+        <TextView
+            android:id="@+id/tv_AddAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@id/iv_AddAddress"
+            android:text="新增收货地址"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_16sp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/delivery_store"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:paddingLeft="16dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:layout_below="@id/title"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_14sp"
+        android:layout_marginBottom="1dp"
+        android:text="配送门店：永辉超市-黎明店"
+        android:visibility="gone"/>
+
+    <ListView
+        android:id="@+id/listView"
+        style="@style/ListViewStyle"
+        android:layout_above="@id/btn_manager_address"
+        android:layout_below="@id/delivery_store"
+        android:dividerHeight="1dp" />
+
+</RelativeLayout>

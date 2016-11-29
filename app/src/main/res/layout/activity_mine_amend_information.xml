@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout style="@style/TitleStyle">
+
+        <TextView
+            style="@style/TextTitleStyle"
+            android:text="编辑个人信息" />
+
+        <ImageButton
+            style="@style/BackStyle"
+            android:onClick="back" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@null"
+            android:onClick="save"
+            android:text="保存"
+            android:textColor="@color/text_white_80"
+            android:textSize="@dimen/text_size_14sp" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="45dp"-->
+            <!--android:layout_marginTop="1dp"-->
+            <!--android:background="@color/white"-->
+            <!--android:paddingLeft="16dp"-->
+            <!--android:paddingRight="16dp">-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/idtype"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:text="证件类型"-->
+            <!--android:textColor="@color/text_normal"-->
+            <!--android:textSize="@dimen/text_size_14sp" />-->
+            <!--<RadioGroup-->
+            <!--android:id="@+id/_rg_idtype"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_marginLeft="10dp"-->
+            <!--android:layout_toRightOf="@+id/idtype"-->
+            <!--android:orientation="horizontal">-->
+
+            <!--<RadioButton-->
+            <!--android:id="@+id/male"-->
+            <!--android:checked="true"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="护照" />-->
+
+            <!--<RadioButton-->
+            <!--android:id="@+id/female"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="女" />-->
+            <!--</RadioGroup>-->
+            <!---->
+            <!--</RelativeLayout>-->
+
+
+            <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="45dp"-->
+            <!--android:layout_marginTop="1dp"-->
+            <!--android:background="@color/white"-->
+            <!--android:paddingLeft="16dp"-->
+            <!--android:paddingRight="16dp">-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/idnumber"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:text="证件号码"-->
+            <!--android:textColor="@color/text_normal"-->
+            <!--android:textSize="@dimen/text_size_14sp" />-->
+
+            <!--<com.yonghui.microservice.widget.MyClearEditText-->
+            <!--android:id="@+id/idnumber_value_ed"-->
+            <!--style="@style/EditTextNoBorderStyle"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_marginLeft="8dp"-->
+            <!--android:layout_toRightOf="@+id/idnumber"-->
+            <!--android:background="@drawable/edittext_selector"-->
+            <!--android:digits="1234567890QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm"-->
+            <!--android:hint="请输入证件号码"-->
+            <!--android:textColor="@color/text_normal"-->
+            <!--android:textColorHint="@color/text_light"-->
+            <!--android:textSize="@dimen/text_size_14sp" />-->
+            <!--</RelativeLayout>-->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+
+                <TextView
+                    android:id="@+id/nickname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="昵称"
+                    android:textColor="@color/text_normal"
+                    android:textSize="@dimen/text_size_14sp" />
+
+                <com.shenme.androiddemo.widget.MyClearEditText
+                    android:id="@+id/nickname_et"
+                    style="@style/EditTextStyleWhiteNoBorderStyle"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="8dp"
+                    android:layout_toRightOf="@+id/nickname"
+                    android:hint="输入你的昵称"
+                    android:textColor="@color/text_normal"
+                    android:textColorHint="@color/text_light"
+                    android:textSize="@dimen/text_size_14sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+
+                <TextView
+                    android:id="@+id/user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="姓名"
+                    android:textColor="@color/text_normal"
+                    android:textSize="@dimen/text_size_14sp" />
+
+                <com.shenme.androiddemo.widget.MyClearEditText
+                    android:id="@+id/user_name_value_ed"
+                    style="@style/EditTextStyleWhiteNoBorderStyle"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="8dp"
+                    android:layout_toRightOf="@+id/user_name"
+                    android:hint="请填写真实姓名"
+                    android:textColor="@color/text_normal"
+                    android:textColorHint="@color/text_light"
+                    android:textSize="@dimen/text_size_14sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+
+                <TextView
+                    android:id="@+id/gender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="性别"
+                    android:textColor="@color/text_normal"
+                    android:textSize="@dimen/text_size_14sp" />
+
+                <RadioGroup
+                    android:id="@+id/sex"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/gender"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/male"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="男" />
+
+                    <RadioButton
+                        android:id="@+id/female"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="女" />
+                </RadioGroup>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/birthday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="生日"
+                    android:textColor="@color/text_normal"
+                    android:textSize="@dimen/text_size_14sp" />
+
+                <com.shenme.androiddemo.widget.MyClearEditText
+                    android:id="@+id/birthday_value_ed"
+                    style="@style/EditTextStyleWhiteNoBorderStyle"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="8dp"
+                    android:layout_toRightOf="@+id/birthday"
+                    android:hint="请输入生日"
+                    android:textColor="@color/text_normal"
+                    android:textColorHint="@color/text_light"
+                    android:textSize="@dimen/text_size_14sp" />
+            </RelativeLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

@@ -1,24 +1,36 @@
 package com.shenme.androiddemo.activity;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.FrameLayout;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.shenme.androiddemo.R;
+import com.shenme.androiddemo.activity.login.LoginActivity;
+import com.shenme.androiddemo.base.BaseActivity;
 import com.shenme.androiddemo.fragment.CategoryFragment;
 import com.shenme.androiddemo.fragment.HomePageFragment;
 import com.shenme.androiddemo.fragment.MineFragment;
 import com.shenme.androiddemo.fragment.ShoppingCartFragment;
+import com.shenme.androiddemo.utils.LinkToUtils;
+import com.shenme.androiddemo.utils.Utils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationBar.OnTabSelectedListener {
+public class MainActivity extends BaseActivity implements BottomNavigationBar.OnTabSelectedListener {
 
+    public static final String BC_UPDATE_USER_INFO = "update_user_info";
+    public static final String BC_UPDATE_ORDER_NUMBER = "update_order_number";
+    public static final String BC_UPDATE_CURRENT_CITY = "update_current_city";
+    public static final String GOTO_CART = "goto_cart";
+    public static final String GOTO_CATEGORY = "goto_category";
+    public static final String GOTO_MINE = "goto_mine";
+    public static final String GOTO_HOME = "goto_home";
+    private static final int IS_LOGIN = 5;
 
     @BindView(R.id.bottomNavigationBar)
     BottomNavigationBar bottomNavigationBar;
@@ -49,9 +61,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
         bottomNavigationBar.setTabSelectedListener(this);
         setDefaultFragment();
     }
+
     //默认fragment
     private void setDefaultFragment() {
-        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         hideFragments(fragmentTransaction);
         homePageFragment = new HomePageFragment();
@@ -83,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
 
     @Override
     public void onTabSelected(int position) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         hideFragments(fragmentTransaction);
         switch (position) {
@@ -104,19 +117,28 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
                 }
                 break;
             case 2:
-                if (shoppingCartFragment == null) {
-                    shoppingCartFragment = new ShoppingCartFragment();
-                    fragmentTransaction.add(R.id.fragment_container, shoppingCartFragment);
+                if (!Utils.isLoginUser(mContext)) {
+                    Intent intent = new Intent(mContext, LoginActivity.class);
+                    intent.putExtra(LoginActivity.IS_MINE_FRAGMENT_LOGIN, true);
+                    startActivityForResult(intent, IS_LOGIN);
                 } else {
-                    fragmentTransaction.show(shoppingCartFragment);
+                    if (shoppingCartFragment == null) {
+                        shoppingCartFragment = new ShoppingCartFragment();
+                        fragmentTransaction.add(R.id.fragment_container, shoppingCartFragment);
+                    } else {
+                        fragmentTransaction.show(shoppingCartFragment);
+                    }
                 }
                 break;
             case 3:
-                if (mineFragment == null) {
-                    mineFragment = new MineFragment();
-                    fragmentTransaction.add(R.id.fragment_container, mineFragment);
-                } else {
-                    fragmentTransaction.show(mineFragment);
+                if (!LinkToUtils.checkAndLoginActivity(mContext)) {
+                    if (mineFragment == null) {
+                        mineFragment = new MineFragment();
+                        fragmentTransaction.add(R.id.fragment_container, mineFragment);
+                    } else {
+                        fragmentTransaction.show(mineFragment);
+                    }
+
                 }
                 break;
         }

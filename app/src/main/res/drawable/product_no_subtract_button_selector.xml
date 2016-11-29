@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@mipmap/icon_sub_enable_t" android:state_enabled="true"/>
+    <item android:drawable="@mipmap/icon_sub_enable_f" android:state_enabled="false"/>
+</selector>

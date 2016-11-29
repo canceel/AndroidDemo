@@ -1,22 +1,167 @@
 package com.shenme.androiddemo.utils;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
-import android.hardware.Camera;
-import android.hardware.Camera.Parameters;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.text.Html;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.shenme.androiddemo.R;
+import com.shenme.androiddemo.activity.login.LoginActivity;
+import com.shenme.androiddemo.base.ApplicationInit;
+import com.shenme.androiddemo.bean.shoppingcart.Price;
+import com.shenme.androiddemo.bean.user.Customer;
 import com.shenme.androiddemo.widget.CircleBoard;
 
-import java.util.List;
+import java.text.DecimalFormat;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by CANC on 2016/8/29.
  */
 public class Utils {
+    /**
+     * 手机网络检测
+     *
+     * @param context
+     * @return
+     */
+    public static boolean isNetworkConnected(Context context) {
+        if (context != null) {
+            ConnectivityManager mConnectivityManager = (ConnectivityManager) context
+                    .getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo mNetworkInfo = mConnectivityManager.getActiveNetworkInfo();
+            if (mNetworkInfo != null && mNetworkInfo.isAvailable()) {
+                return true;
+            }
+        }
+        try {
+            ToastUtil.show("请检查您的网络连接！");
+        } catch (Exception e) {
+            return false;
+        }
+
+        return false;
+    }
+
+    public static int dipDimensionInteger(Context context, float value) {
+        return (int) (dipDimensionFloat(context, value) + 0.5f);
+    }
+
+    public static float dipDimensionFloat(Context context, float value) {
+        return context == null ? value : TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP, value, context.getResources()
+                        .getDisplayMetrics());
+    }
+
+    public static Spanned getHtmlRedFormat(String string0, String string) {
+        return getHtmlRedFormat(string0, "<font size = \"20px\" color=\"#FFB925\">" + string + "</font>", "");
+    }
+
+    public static Spanned getHtmlRedFormat(String string0, String string, String string1) {
+        return Html.fromHtml(string0 + "<font size = \"20px\" color=\"#FFB925\">" + string + "</font>" + string1);
+    }
+
+    public static Spanned getHtmlRedFormatRed(String string, String string1) {
+        return Html.fromHtml(string + "<font size = \"20px\" color=\"#E80000\">" + string1 + "</font>");
+    }
+
+    /**
+     * 不能输入表情
+     */
+
+    public static void unSupportExpression(final EditText editText) {
+        InputFilter emojiFilter = new InputFilter() {
+            Pattern emoji = Pattern.compile(
+                    "[\\ud83c\\udc00-\\ud83c\\udfff]|[\\ud83d\\udc00-\\ud83d\\udfff]|[\\u2600-\\u27ff]",
+                    Pattern.UNICODE_CASE | Pattern.CASE_INSENSITIVE);
+
+            @Override
+            public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart,
+                                       int dend) {
+
+                Matcher emojiMatcher = emoji.matcher(source);
+                if (emojiMatcher.find()) {
+                    ToastUtil.show("不能包含表情");
+                    return "";
+                }
+                return null;
+            }
+        };
+        editText.setFilters(new InputFilter[]{emojiFilter});
+    }
+
+    /**
+     * 获得屏幕高度
+     *
+     * @param context
+     * @return
+     */
+    public static int getScreenHight(Context context) {
+        WindowManager wm = (WindowManager) context
+                .getSystemService(Context.WINDOW_SERVICE);
+        DisplayMetrics outMetrics = new DisplayMetrics();
+        wm.getDefaultDisplay().getMetrics(outMetrics);
+        return outMetrics.heightPixels;
+    }
+
+    /**
+     * 获得屏幕宽度
+     *
+     * @param context
+     * @return
+     */
+    public static int getScreenWidth(Context context) {
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        DisplayMetrics outMetrics = new DisplayMetrics();
+        wm.getDefaultDisplay().getMetrics(outMetrics);
+        return outMetrics.widthPixels;
+    }
+
+    /**
+     * 价格格式化工具
+     *
+     * @param price 价格类
+     * @return
+     */
+    public static String PriceFormat(Price price) {
+        if (price == null || price.currencyIso == null) {
+            return PriceFormat(0);
+        }
+        if ("CNY".equals(price.currencyIso)) {
+            return PriceFormat(price.value);
+        } else {
+            return PriceFormat(price.value).replace("¥ ", price.currencyIso);
+        }
+    }
+
+    public static String PriceFormat(double price) {
+        DecimalFormat df = new DecimalFormat("#0.00");
+        return "¥ " + df.format(price);
+    }
+
+    public static String PriceFormat(String price) {
+        if (TextUtils.isEmpty(price)) {
+            return "¥0.00";
+        }
+        DecimalFormat df = new DecimalFormat("#0.00");
+        try {
+            return "¥" + df.format(Float.valueOf(price));
+        } catch (Exception e) {
+            return "¥0.00";
+        }
+    }
 
 
     /**
@@ -129,56 +274,183 @@ public class Utils {
         return layoutParams;
     }
 
-    /**
-     * 设置Caramer打开闪光灯
-     *
-     * @param mCamera
-     */
-    public static void returnLightOpen(Camera mCamera) {
-        if (mCamera == null) {
-            return;
-        }
-        Parameters parameters = mCamera.getParameters();
-        if (parameters == null) {
-            return;
-        }
-        List<String> flashModes = parameters.getSupportedFlashModes();
-        if (flashModes == null) {
-            return;
-        }
-        if (!parameters.FLASH_MODE_TORCH.equals(flashModes)) {
-            if (flashModes.contains(parameters.FLASH_MODE_TORCH)) {
-                parameters.setFlashMode(parameters.FLASH_MODE_TORCH);
-                mCamera.setParameters(parameters);
-            }
-        }
 
+    /**
+     * 保存用户的唯一标识
+     *
+     * @param context
+     * @param accessToken
+     */
+    public static void saveAccessToken(Context context, String accessToken, String refreshToken, long expiresIn) {
+        SharedPreUtils.putString(context, SharedPre.App.ACCESS_TOKEN, accessToken);
+        SharedPreUtils.putString(context, SharedPre.App.REFRESH_TOKEN, refreshToken);
+        SharedPreUtils.putLong(context, SharedPre.App.EXPIRES_IN, (expiresIn * 1000));
+        SharedPreUtils.putLong(context, SharedPre.App.UPDATE_DATE, System.currentTimeMillis());
     }
 
     /**
-     * 设置Caramer关闭闪关灯
+     * 保存用户信息
      *
-     * @param mCamera
+     * @param context
+     * @param customer
      */
-    public static void returnLightOff(Camera mCamera) {
-        if (mCamera == null) {
-            return;
+    public static void saveUserInfo(Context context, Customer customer) {
+        if (context == null) {
+            context = ApplicationInit.context;
         }
-        Parameters parameters = mCamera.getParameters();
-        if (parameters == null) {
-            return;
-        }
-        List<String> flashModes = parameters.getSupportedFlashModes();
-        if (flashModes == null) {
-            return;
-        }
-        if (!parameters.FLASH_MODE_OFF.equals(flashModes)) {
-            if (flashModes.contains(parameters.FLASH_MODE_OFF)) {
-                parameters.setFlashMode(parameters.FLASH_MODE_OFF);
-                mCamera.setParameters(parameters);
-            }
+//        SharedPreUtils.putString(context, SharedPre.User.AVATAR_URL, customer.avatarurl);
+        SharedPreUtils.putString(context, SharedPre.User.NICKNAME, customer.getNickName());
+        SharedPreUtils.putString(context, SharedPre.User.USERPK, customer.getUserPk());
+        SharedPreUtils.putString(context, SharedPre.User.EMAIL, customer.getEmail());
+        SharedPreUtils.putString(context, SharedPre.User.GENDER, customer.getSex());
+        SharedPreUtils.putString(context, SharedPre.User.ID_NUMBER, customer.getIdNumber());
+        SharedPreUtils.putString(context, SharedPre.User.ID_TYPE, customer.getIdType());
+        SharedPreUtils.putString(context, SharedPre.User.CONTACT_EMAIL, customer.getContactEmail());
+        SharedPreUtils.putString(context, SharedPre.User.MEMBER_STATUS, customer.getMember_status());
+        SharedPreUtils.putString(context, SharedPre.User.UPDATE_TIME, customer.getLastUpdateTime());
+        SharedPreUtils.putString(context, SharedPre.User.MOBILE, customer.getMobileNumber());
+        SharedPreUtils.putString(context, SharedPre.User.NAME, customer.getName());
+        SharedPreUtils.putString(context, SharedPre.User.USER_NAME, customer.getUserName());
+    }
+
+    /**
+     * 是否为登录用户
+     *
+     * @param context
+     * @return
+     */
+    public static boolean isLoginUser(Context context) {
+        return (!TextUtils.isEmpty(SharedPreUtils.getString(context, SharedPre.App.ACCESS_TOKEN)));
+    }
+
+    /**
+     * 判断token过期
+     * 判断是否登录,未登录---直接调入登录,返回true
+     *
+     * @param context
+     * @return
+     */
+    public static boolean checkAndLoginActivity(Context context) {
+        //判断token   //判断是否登录
+        if (Utils.getToken(context) == null || !Utils.isLoginUser(context)) {
+            Intent intent = new Intent(context, LoginActivity.class);
+            context.startActivity(intent);
+            return true;
+        } else {
+            return false;
         }
     }
 
+    /**
+     * 获取userID
+     *
+     * @param context
+     * @return
+     */
+    public static String getUserID(Context context) {
+        return SharedPreUtils.getString(context, SharedPre.User.USERPK);
+    }
+
+    /**
+     * 获得access_token
+     *
+     * @param context
+     * @return
+     */
+    public static String getToken(Context context) {
+        return getToken(context, true);
+    }
+
+
+    public static String getToken(Context context, boolean isGotoLogin) {
+        String accessToken = SharedPreUtils.getString(context, SharedPre.App.ACCESS_TOKEN);
+        if (TextUtils.isEmpty(accessToken)) {
+            return null;
+        }
+        return accessToken;
+    }
+
+    /**
+     * 获取用户信息
+     *
+     * @param context
+     */
+    public static Customer getUserInfo(Context context) {
+        if (context == null) {
+            context = ApplicationInit.context;
+        }
+        if (!isLoginUser(context)) {
+            return null;
+        }
+        Customer customer = new Customer();
+//        customer.avatarurl = SharedPreUtils.getString(context, SharedPre.User.AVATAR_URL);
+        customer.setNickName(SharedPreUtils.getString(context, SharedPre.User.NICKNAME));
+        customer.setUserPk(SharedPreUtils.getString(context, SharedPre.User.USERPK));
+        customer.setEmail(SharedPreUtils.getString(context, SharedPre.User.EMAIL));
+        customer.setSex(SharedPreUtils.getString(context, SharedPre.User.GENDER));
+        customer.setIdNumber(SharedPreUtils.getString(context, SharedPre.User.ID_NUMBER));
+        customer.setIdType(SharedPreUtils.getString(context, SharedPre.User.ID_TYPE));
+        customer.setContactEmail(SharedPreUtils.getString(context, SharedPre.User.CONTACT_EMAIL));
+        customer.setMember_status(SharedPreUtils.getString(context, SharedPre.User.MEMBER_STATUS));
+        customer.setLastUpdateTime(SharedPreUtils.getString(context, SharedPre.User.UPDATE_TIME));
+        customer.setMobileNumber(SharedPreUtils.getString(context, SharedPre.User.MOBILE));
+        customer.setName(SharedPreUtils.getString(context, SharedPre.User.NAME));
+        customer.setUserName(SharedPreUtils.getString(context, SharedPre.User.USER_NAME));
+        return customer;
+    }
+
+
+    //清除SP中用户的信息
+    public static void cleanUserInfo(Context context) {
+        if (context == null) {
+            context = ApplicationInit.context;
+        }
+        SharedPreUtils.removeSharedKey(context, SharedPre.User.AVATAR_URL);
+        SharedPreUtils.removeSharedKey(context, SharedPre.User.NICKNAME);
+        SharedPreUtils.removeSharedKey(context, SharedPre.User.USERPK);
+        SharedPreUtils.removeSharedKey(context, SharedPre.User.EMAIL);
+        SharedPreUtils.removeSharedKey(context, SharedPre.User.GENDER);
+        SharedPreUtils.removeSharedKey(context, SharedPre.User.ID_TYPE);
+        SharedPreUtils.removeSharedKey(context, SharedPre.User.CONTACT_EMAIL);
+        SharedPreUtils.removeSharedKey(context, SharedPre.User.MEMBER_STATUS);
+        SharedPreUtils.removeSharedKey(context, SharedPre.User.UPDATE_TIME);
+        SharedPreUtils.removeSharedKey(context, SharedPre.User.NAME);
+        SharedPreUtils.removeSharedKey(context, SharedPre.User.USER_NAME);
+
+        SharedPreUtils.removeSharedKey(context, SharedPre.App.ACCESS_TOKEN);
+        SharedPreUtils.removeSharedKey(context, SharedPre.App.EXPIRES_IN);
+        SharedPreUtils.removeSharedKey(context, SharedPre.App.ADDRESS_ID);
+
+        SharedPreUtils.removeSharedKey(context, SharedPre.Cart.CODE);
+        SharedPreUtils.removeSharedKey(context, SharedPre.Cart.GUID);
+        SharedPreUtils.removeSharedKey(context, SharedPre.Cart.NUMBER);
+
+        SharedPreUtils.removeSharedKey(context, SharedPre.Cart.DRINKMODULE_STORE_CODE);
+        SharedPreUtils.removeSharedKey(context, SharedPre.Cart.DRINKMODULE_CODE);
+        SharedPreUtils.removeSharedKey(context, SharedPre.Cart.DRINKMODULE_NUMBER);
+        SharedPreUtils.removeSharedKey(context, SharedPre.Cart.DRINKMODULE_TAKES_TIME);
+
+        SharedPreUtils.removeSharedKey(context, SharedPre.Homepager.LINKGROUPS_HOME);
+        SharedPreUtils.removeSharedKey(context, SharedPre.Homepager.LINKGROUPS_GLOBAL_HOME);
+        SharedPreUtils.removeSharedKey(context, SharedPre.Homepager.HOME_TIME_OFFSET);
+        SharedPreUtils.removeSharedKey(context, SharedPre.Homepager.GLOBAL_TIME_OFFSET);
+        SharedPreUtils.removeSharedKey(context, SharedPre.Homepager.TIME_OFFSET);
+        SharedPreUtils.removeSharedKey(context, SharedPre.Homepager.PAGELOG);
+
+        SharedPreUtils.removeSharedKey(context, SharedPre.User.Card.ID);
+        SharedPreUtils.removeSharedKey(context, SharedPre.User.Card.POINTS);
+        SharedPreUtils.removeSharedKey(context, SharedPre.User.Card.OUTDATE_POINTS);
+        SharedPreUtils.removeSharedKey(context, SharedPre.User.Card.OUTDATE_TIME);
+    }
+
+    /**
+     * 获取购物车商品数量
+     *
+     * @param context
+     * @return
+     */
+    public static int getCartNo(Context context) {
+        return SharedPreUtils.getInt(context, SharedPre.Cart.NUMBER, 0);
+    }
 
 }

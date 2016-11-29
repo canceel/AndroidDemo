@@ -1,0 +1,97 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white_255_255_255"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/head"
+        style="@style/TitleStyle">
+
+        <ImageButton
+            style="@style/BackStyle"
+            android:onClick="back" />
+
+        <TextView
+            style="@style/TextTitleStyle"
+            android:text="注册/激活" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="28dp"
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/background_radius_white_boder_yellow">
+
+            <TextView
+                android:id="@+id/phone_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:text="@string/common_login_account_tip"
+                android:textColor="@color/black_4f_4f_4f" />
+
+            <com.shenme.androiddemo.widget.MyClearEditText
+                android:id="@+id/cell"
+                style="@style/EditTextStyleWhiteNoBorderStyle"
+                android:hint="请输入手机号"
+                android:imeOptions="actionNext"
+                android:inputType="phone"
+                android:maxLength="11"
+                android:singleLine="true" />
+
+            <ImageView
+                android:id="@+id/cell_x"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:src="@mipmap/icon_delete_text"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/confirm"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:text="下一步"
+            android:textSize="@dimen/text_size_16sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="已有账户，"
+                android:textColor="@color/black_4f_4f_4f"
+                android:textSize="@dimen/text_size_14sp" />
+
+            <TextView
+                android:id="@+id/gotoLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="我要登录>>"
+                android:textColor="@color/text_light_blue"
+                android:textSize="@dimen/text_size_14sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

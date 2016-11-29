@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">AndroidDemo</string>
+
+    <string name="loadmore_foot_no_data_tip">没有更多了</string>
+    <string name="rule_phone">0123456789</string>
+    <string name="binding_cell_confirm_tip">确认绑定</string>
+    <string name="common_login_title">登录</string>
+    <string name="common_login_account_tip">手机</string>
+    <string name="common_login_password_tip">密码</string>
+    <string name="common_account_format_tip">请输入手机号</string>
+    <string name="common_password_format_tip">请输入6—12位数字与字母组成的密码</string>
+    <string name="common_register_right_now_tip">立即注册</string>
+    <string name="common_forget_password">忘记密码？</string>
+    <string name="common_login_right_now">登    录</string>
 </resources>

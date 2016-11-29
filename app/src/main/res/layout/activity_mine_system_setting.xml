@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout style="@style/TitleStyle">
+
+        <ImageButton
+            style="@style/BackStyle"
+            android:onClick="back" />
+
+        <TextView
+            style="@style/TextTitleStyle"
+            android:text="系统设置" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:layout_marginTop="48dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:background="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:id="@+id/app_versions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="16dp"
+                    android:textColor="@color/text_normal"
+                    android:textSize="@dimen/text_size_14sp" />
+            </LinearLayout>
+
+
+
+            <Button
+                android:id="@+id/about"
+                style="@style/ButtonStyle"
+                android:layout_marginTop="1dp"
+                android:drawableRight="@mipmap/icon_row"
+                android:gravity="left|center_vertical"
+                android:text="关于我们" />
+
+            <Button
+                android:id="@+id/check_version"
+                style="@style/ButtonStyle"
+                android:layout_marginTop="1dp"
+                android:drawableRight="@mipmap/icon_row"
+                android:gravity="left|center_vertical"
+                android:text="检查更新" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/clear_cache"
+                    style="@style/ButtonStyle"
+                    android:layout_marginTop="1dp"
+                    android:gravity="left|center_vertical"
+                    android:text="清除缓存" />
+
+                <TextView
+                    android:id="@+id/cache_size"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:drawablePadding="10dp"
+                    android:drawableRight="@mipmap/icon_row"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/text_normal" />
+
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/exit"
+                style="@style/ButtonStyle"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="24dp"
+                android:text="注销当前账号"
+                android:textSize="18dp" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

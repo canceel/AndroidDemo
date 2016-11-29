@@ -26,7 +26,7 @@ public abstract class CodeHandledSubscriber<T> extends Subscriber<T> {
     private static final int SERVICE_UNAVAILABLE = 503;
     private static final int GATEWAY_TIMEOUT = 504;
     private static final String INVALID_TOKEN = "10005";
-    private static final String REQUEST_SUCCESS = "false";
+    private static final String REQUEST_SUCCESS = "20000";
     private static final String SYSTEM_BUSY = "10010";
     //权限不足
     private static final String INSUFFICIENT_PERMISSIONS = "30010";
@@ -103,10 +103,10 @@ public abstract class CodeHandledSubscriber<T> extends Subscriber<T> {
     public void onNext(T t) {
         if (t instanceof BaseResult) {
             BaseResult baseResultEntity = (BaseResult) t;
-            if (REQUEST_SUCCESS.equals(baseResultEntity.getError())) {
+            if (REQUEST_SUCCESS.equals(baseResultEntity.getStatus())) {
                 onBusinessNext(t);
             } else {
-                onError(new ApiException(Integer.parseInt(baseResultEntity.getError()), baseResultEntity.getError()));
+                onError(new ApiException(Integer.parseInt(baseResultEntity.getStatus()), baseResultEntity.getMessage()));
             }
         }
     }

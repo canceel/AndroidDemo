@@ -9,11 +9,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_view"
+        <ListView
+            android:id="@+id/list_view"
+            style="@style/ListViewStyle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/background"></android.support.v7.widget.RecyclerView>
+            android:divider="@color/grey_f2f2f2"
+            android:dividerHeight="1dp"
+            android:scrollbars="none" />
 
     </com.shenme.androiddemo.widget.SwipeRefreshLayout>
 

@@ -1,0 +1,146 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/header"
+        style="@style/TitleStyle">
+
+        <ImageButton
+            android:id="@+id/btn_back"
+            style="@style/BackStyle"
+            android:onClick="back"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="16dp"
+            android:background="@color/black"
+            android:gravity="center_vertical"
+            android:text="取消"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_14sp" />
+
+        <EditText
+            android:id="@+id/et_search"
+            style="@style/EditTextRadiusGreyStyle"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="16dp"
+            android:layout_toLeftOf="@id/tv_cancel"
+            android:layout_toRightOf="@id/btn_back"
+            android:layout_weight="4"
+            android:background="@drawable/background_radius_white_boder_yellow"
+            android:drawableLeft="@mipmap/icon_search_grey"
+            android:drawablePadding="5dp"
+            android:ellipsize="middle"
+            android:gravity="left|center_vertical"
+            android:hint="请输入关键字"
+            android:imeOptions="actionSearch"
+            android:paddingLeft="10dp"
+            android:paddingRight="8dp"
+            android:singleLine="true"
+            android:textColorHint="@color/grey_185_188_193"
+            android:textSize="@dimen/text_size_14sp" />
+
+        <ImageButton
+            android:id="@+id/ib_search_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+            android:layout_toLeftOf="@id/tv_cancel"
+            android:background="@mipmap/icon_location_cancel"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_hot_key"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/header"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="8dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="8dp"
+        android:paddingTop="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="热搜"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16sp" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@+id/layout_hot_sale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" />
+        </HorizontalScrollView>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/history_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_hot_key"
+        android:layout_marginTop="5dp"
+        android:background="@color/white"
+        android:paddingBottom="8dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="8dp"
+        android:text="历史搜索"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_16sp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:layout_below="@+id/history_title">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.shenme.androiddemo.widget.AutoHeightListView
+                android:id="@+id/lv_history"
+                style="@style/ListViewStyle"
+                android:overScrollMode="never"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:divider="@color/separator"
+                android:dividerHeight="1dp" />
+
+
+            <Button
+                android:id="@+id/btn_history_clear"
+                android:layout_width="100dp"
+                android:layout_height="42dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="16dp"
+                android:text="清除记录" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

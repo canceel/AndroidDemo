@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout style="@style/TitleStyle">
+
+        <TextView
+            style="@style/TextTitleStyle"
+            android:text="个人信息" />
+
+        <ImageButton
+            style="@style/BackStyle"
+            android:onClick="back" />
+
+        <ImageButton
+            style="@style/BackStyle"
+            android:layout_alignParentRight="true"
+            android:onClick="infor_redact"
+            android:src="@mipmap/icon_infor_edit" />
+    </RelativeLayout>
+
+    <com.shenme.androiddemo.widget.CircleImageView
+        android:id="@+id/user_icon"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="32dp"
+        android:background="@null"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="32dp"
+        android:background="@color/white"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <TextView
+            android:id="@+id/cell_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="昵称："
+            android:textColor="@color/text_normal"
+            android:textSize="@dimen/text_size_14sp" />
+
+        <TextView
+            android:id="@+id/nickname_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:layout_toRightOf="@id/cell_no"
+            android:textColor="@color/text_normal"
+            android:textSize="@dimen/text_size_14sp" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <TextView
+            android:id="@+id/mobile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="手机："
+            android:textColor="@color/text_normal"
+            android:textSize="@dimen/text_size_14sp" />
+
+        <TextView
+            android:id="@+id/mobile_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:layout_toRightOf="@id/mobile"
+            android:textColor="@color/text_normal"
+            android:textSize="@dimen/text_size_14sp" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="姓名："
+            android:textColor="@color/text_normal"
+            android:textSize="@dimen/text_size_14sp" />
+
+        <TextView
+            android:id="@+id/user_name_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:layout_toRightOf="@id/name"
+            android:textColor="@color/text_normal"
+            android:textSize="@dimen/text_size_14sp" />
+    </RelativeLayout>
+</LinearLayout>
